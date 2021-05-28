@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+  <p onClick="makeGreen()">- I 💗 YOU! -</p>
+
+<style>
+html {
+  background: url("heart.png") center no-repeat;
+}
+p {
+  text-align:center;
+}
+</style>
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '100px';
+      p.style.paddingTop = '180px';
+    }
+
+    //CONSOLE PRACTICE//
+    // Regular
+    console.log('Hello World!');
+
+    // Interpolated
+    console.log('Hello I am a %s string!', '😊')
+
+    // Styled
+    console.log('%c I am some great text', 'font-size:40px; background:aquamarine; text-shadow:10px 10px 0 green')
+
+    // warning!
+    console.warn('OH NOOO');
+
+    // Error :|
+    console.error('_ERROR 101_');
+
+    // Info
+    console.info('More human twins are being born now than ever before');
+
+    // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'That is not correct!');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);  //show you the actual element itself
+    console.dir(p);  //open up to look at the class list
+
+    console.clear();
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('Wayne');
+    console.count('Wayne');
+    console.count('Jane');
+    console.count('Jane');
+    console.count('Wayne');
+    console.count('Wayne');
+    console.count('Jane');
+    console.count('Jane');
+    console.count('Jane');
+    console.count('Jane');
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/sfemikey')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+      //table
+      console.table(dogs);
+
+  </script>
+</body>
+</html>
